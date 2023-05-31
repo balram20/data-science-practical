@@ -1,0 +1,21 @@
+import pandas as pd
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+
+# Load the Iris dataset
+iris_data = pd.read_csv('iris.csv')
+
+# Specify the column containing the text data
+text_column = 'species'  # Replace with the column name containing the text data
+
+# Concatenate all text values in the column
+text = ' '.join(iris_data[text_column].values)
+
+# Create the word cloud
+wordcloud = WordCloud(width=800, height=400, background_color='white').generate(text)
+
+# Display the word cloud
+plt.figure(figsize=(10, 6))
+plt.imshow(wordcloud, interpolation='bilinear')
+plt.axis('off')
+plt.show()
